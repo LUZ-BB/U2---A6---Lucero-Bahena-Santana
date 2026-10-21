@@ -1,31 +1,31 @@
 package mx.edu.utez.proyecto1C.controller.dto;
 
-import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class RequestBodyDTO {
-    @NotBlank(message = "El nombre es obligatorio")
-    @Size(min =3, message = "El nombre debe tener al menos 3 caracteres")
+
+    @NotBlank(message = "El nombre no puede estar vacio")
     private String nombre;
 
-    @Min(value = 18, message = "Debes ser mayor de edad")
-    private int edad;
+    @NotNull(message = "La edad es obligatoria")
+    private Integer edad;
 
-    @NotBlank(message = "el correo es obligatorio")
-    @Email(message = "el formato del correo no es valido")
-    private String email;
+    public RequestBodyDTO() {}
 
-    @NotBlank(message = "el curp es obligatorio")
-    @Pattern(
-            regexp = "^[A-Z][AEIOUX][A-Z]{2}\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\d|3[01])[HM](?:AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TL|TS|VZ|YN|ZS|NE)[BCDFGHJKLMNPQRSTVWXYZ]{3}[A-Z\\d]\\d$",
-            message = "La CURP no tiene un formato válido"
-    )
-    private String curp;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
 }
